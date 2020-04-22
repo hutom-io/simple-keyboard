@@ -1,5 +1,6 @@
 import Keyboard from "../lib";
 import "./css/BasicDemo.css";
+import Hangul from "hangul-js";
 
 const setDOM = () => {
   document.querySelector("#root").innerHTML = `
@@ -7,6 +8,9 @@ const setDOM = () => {
     <div class="simple-keyboard"></div>
   `;
 };
+
+let buttonArray = [];
+let inputKorean = "";
 
 class Demo {
   constructor() {
@@ -29,17 +33,32 @@ class Demo {
   }
 
   onChange(input) {
-    document.querySelector(".input").value = input;
+    document.querySelector(".input").value = inputKorean;
     console.log("Input changed", input);
   }
 
   onKeyPress(button) {
     console.log("Button pressed", button);
+    if (
+      button !== "{shift}" &&
+      button !== "{language}" &&
+      button !== "{enter}" &&
+      button !== "{tab}" &&
+      button !== "{bksp}" &&
+      button !== "{space}"
+    ) {
+      buttonArray.push(button);
+    }
+    if (button === "{bksp}") {
+      buttonArray.pop();
+    }
+    inputKorean = Hangul.assemble(buttonArray);
 
     /**
      * If you want to handle the shift and caps lock buttons
      */
-    if (button === "{shift}" || button === "{lock}") this.handleShift();
+    if (button === "{shift}") this.handleShift();
+    if (button === "{language}") this.handleLanguage();
   }
 
   handleShift() {
@@ -49,6 +68,21 @@ class Demo {
     this.keyboard.setOptions({
       layoutName: shiftToggle
     });
+
+    console.log(this.keyboard.options);
+  }
+
+  handleLanguage() {
+    console.log("here");
+    const currentLanguage = this.keyboard.options.language;
+    const languageToggle =
+      currentLanguage === "default" ? "english" : "default";
+
+    this.keyboard.setOptions({
+      language: languageToggle
+    });
+
+    console.log(this.keyboard.options);
   }
 }
 

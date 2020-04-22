@@ -1,8 +1,4 @@
 import "./css/index.css";
-
-/**
- * Demos
- */
 import BasicDemo from "./BasicDemo";
 // import ButtonThemeDemo from "./ButtonThemeDemo";
 // import DOMElementDemo from "./DOMElementDemo";
