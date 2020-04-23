@@ -1,7 +1,7 @@
 {
-  "name": "simple-keyboard",
-  "version": "2.28.72",
-  "description": "On-screen Javascript Virtual Keyboard",
+  "name": "@hutom/virtual-keyboard",
+  "version": "1.0.0",
+  "description": "On-screen Javascript Virtual Keyboard (Korean layout, English layout)",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
@@ -15,11 +15,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hodgef/simple-keyboard"
+    "url": "https://github.com/hutom-io/virtual-keyboard"
   },
-  "author": "Francisco Hodge <hello@franciscohodge.com> (https://github.com/hodgef)",
+  "author": "Song-A Lee <songa.lee@hutom.io> (https://github.com/hutom-io)",
   "bugs": {
-    "url": "https://github.com/hodgef/simple-keyboard/issues"
+    "url": "https://github.com/hutom-io/virtual-keyboard/issues"
   },
   "homepage": "https://virtual-keyboard.js.org/",
   "keywords": [
@@ -36,7 +36,10 @@
     "touch-screen",
     "kiosk",
     "osk",
-    "js"
+    "js",
+    "Korean-layout",
+    "English-layout",
+    "hangul.js"
   ],
   "license": "MIT",
   "devDependencies": {
