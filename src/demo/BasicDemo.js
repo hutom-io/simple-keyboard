@@ -10,7 +10,7 @@ const setDOM = () => {
 };
 
 let buttonArray = [];
-let inputKorean = "";
+let inputText = "";
 
 class Demo {
   constructor() {
@@ -32,9 +32,8 @@ class Demo {
     });
   }
 
-  onChange(input) {
-    document.querySelector(".input").value = inputKorean;
-    console.log("Input changed", input);
+  onChange() {
+    document.querySelector(".input").value = inputText;
   }
 
   onKeyPress(button) {
@@ -43,16 +42,23 @@ class Demo {
       button !== "{shift}" &&
       button !== "{language}" &&
       button !== "{enter}" &&
-      button !== "{tab}" &&
       button !== "{bksp}" &&
-      button !== "{space}"
+      button !== "{space}" &&
+      button !== "{tab}"
     ) {
       buttonArray.push(button);
     }
     if (button === "{bksp}") {
       buttonArray.pop();
     }
-    inputKorean = Hangul.assemble(buttonArray);
+    if (button === "{space}") {
+      buttonArray.push(" ");
+    }
+    if (button === "{tab}") {
+      buttonArray.push("  ");
+    }
+    
+    inputText = Hangul.assemble(buttonArray);
 
     /**
      * If you want to handle the shift and caps lock buttons
@@ -68,8 +74,6 @@ class Demo {
     this.keyboard.setOptions({
       layoutName: shiftToggle
     });
-
-    console.log(this.keyboard.options);
   }
 
   handleLanguage() {
@@ -81,8 +85,6 @@ class Demo {
     this.keyboard.setOptions({
       language: languageToggle
     });
-
-    console.log(this.keyboard.options);
   }
 }
 
