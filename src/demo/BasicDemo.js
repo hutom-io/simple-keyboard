@@ -57,7 +57,7 @@ class Demo {
     if (button === "{tab}") {
       buttonArray.push("  ");
     }
-    
+
     inputText = Hangul.assemble(buttonArray);
 
     /**
